@@ -1,0 +1,48 @@
+@import '../../../../styles-library/button.scss';
+
+.container {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  display: grid;
+  grid-template-columns: 40% 20% 40%;
+  grid-template-rows: 80% 20%;
+  gap: 1px 1px;
+  grid-template-areas: 'card1 score card2' 'result1 . result2';
+
+  .card1, .start-btn, .card2, .result1, .score, .result2 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .card1 {
+    grid-area: card1;
+  }
+
+  .card2 {
+    grid-area: card2;
+  }
+
+  .result1 {
+    grid-area: result1;
+  }
+
+  .result2 {
+    grid-area: result2;
+  }
+
+  .score {
+    grid-area: score;
+    // background-color: rgba(128, 128, 128, 0.171);
+  }
+
+  .start-btn {
+    grid-area: btn;
+    // background-color: rgba(0, 0, 255, 0.199);
+  }
+
+  p {
+    font-size: $fs-xl;
+  }
+}
