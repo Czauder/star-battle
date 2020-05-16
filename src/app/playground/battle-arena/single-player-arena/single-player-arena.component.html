@@ -12,7 +12,7 @@
         <p>{{ (isWinner < 0 ? "Winner": "Lose") | emptyValue}}</p>
     </div>
     <div class="score">
-        <p>{{scorePlayer1 | emptyValue }} : {{scorePlayer2 | emptyValue}}</p>
+        <p>{{scorePlayer1 }} : {{scorePlayer2 }}</p>
     </div>
     <div class="start-btn">
         <i (click)="playGame()" class="material-icons" aria-hidden="true">play_circle_outline
