@@ -1,1 +1,40 @@
-/* You can add global styles to this file, and also import other style files */
+@import './styles-library/variables.scss';
+
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  background-color: $clr-secondary;
+}
+
+p {
+  font-family: $title-font-secondary;
+  font-weight: $fw-normal;
+  color: $clr-primary;
+  font-size: $fs-body;
+  user-select: none;
+}
+
+h1 {
+  font-family: $title-font-secondary;
+  font-weight: $fw-bold;
+  color: $clr-primary;
+  font-size: $fs-h1;
+  user-select: none;
+}
+
+h2 {
+  font-family: $title-font-secondary;
+  font-weight: $fw-bold;
+  color: $clr-primary;
+  font-size: $fs-h2;
+  user-select: none;
+}
+
+h3 {
+  font-family: $title-font-secondary;
+  font-weight: $fw-bold;
+  color: $clr-primary;
+  font-size: $fs-h3;
+  user-select: none;
+}
