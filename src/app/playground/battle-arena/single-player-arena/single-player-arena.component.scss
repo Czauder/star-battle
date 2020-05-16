@@ -1,0 +1,54 @@
+.container {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    display: grid;
+    grid-template-columns: 40% 20% 40%;
+    grid-template-rows: 80% 20%;
+    gap: 1px 1px;
+    grid-template-areas: "card1 btn card2" "result1 score result2";
+
+    .card1 {
+        grid-area: card1;
+        width: 100%;
+        height: 100%;
+        background-color: white;
+    }
+
+    .card2 {
+        grid-area: card2;
+        width: 100%;
+        height: 100%;
+        background-color: gold;
+    }
+
+    .result1 {
+        grid-area: result1;
+        width: 100%;
+        height: 100%;
+        background-color: red;
+    }
+
+    .result2 {
+        grid-area: result2;
+        width: 100%;
+        height: 100%;
+        background-color: orchid;
+    }
+
+    .score {
+        grid-area: score;
+        width: 100%;
+        height: 100%;
+        background-color: grey;
+    }
+
+    .start-btn {
+        grid-area: btn;
+        width: 100%;
+        height: 100%;
+        background-color: blue;
+    }
+  }
+
+

@@ -1,8 +1,10 @@
 import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
+import { RouterModule, Routes } from '@angular/router';
+
 import { LayoutComponent } from './layout/layout.component';
+import { MultiPlayersArenaComponent } from './playground/battle-arena/multi-players-arena/multi-players-arena.component';
+import { SinglePlayerArenaComponent } from './playground/battle-arena/single-player-arena/single-player-arena.component';
 import { ModesGameComponent } from './playground/modes-game/modes-game.component';
-import { BattleArenaComponent } from './playground/battle-arena/battle-arena.component';
 
 const routes: Routes = [
   {
@@ -14,8 +16,12 @@ const routes: Routes = [
         component: ModesGameComponent,
       },
       {
-        path: 'battle-arena',
-        component: BattleArenaComponent,
+        path: 'single-player',
+        component: SinglePlayerArenaComponent,
+      },
+      {
+        path: 'multi-player',
+        component: MultiPlayersArenaComponent,
       },
       { path: '', redirectTo: '/home', pathMatch: 'full' },
     ],

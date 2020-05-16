@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-modes-game',
@@ -7,9 +8,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ModesGameComponent implements OnInit {
 
-  constructor() { }
+  constructor(private router: Router) { }
 
-  ngOnInit(): void {
+  public ngOnInit(): void {}
+
+  public navigateS(): any {
+    this.router.navigate(['/single-player']);
   }
 
+  public navigateM(): any {
+    this.router.navigate(['/multi-player']);
+  }
 }
