@@ -1,22 +1,32 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Store } from '@ngrx/store';
+import { GameState } from 'src/app/store/reducer/playground.reducer';
+import { setMode } from 'src/app/store/actions/playerground.action';
+import { ModeType } from '../models/game.model';
 
 @Component({
   selector: 'app-modes-game',
   templateUrl: './modes-game.component.html',
-  styleUrls: ['./modes-game.component.scss']
+  styleUrls: ['./modes-game.component.scss'],
 })
 export class ModesGameComponent implements OnInit {
-
-  constructor(private router: Router) { }
+  constructor(private router: Router, private store: Store<GameState>) {}
 
   public ngOnInit(): void {}
 
-  public navigateS(): any {
+  public navigateSingleModeS(): any {
     this.router.navigate(['/single-player']);
+    this.store.dispatch(setMode({ modeType: ModeType.PeopleVsPeople }));
   }
 
-  public navigateM(): any {
+  public navigateSingleModeP(): any {
+    this.router.navigate(['/single-player']);
+    this.store.dispatch(setMode({ modeType: ModeType.StarsShipVsStarsShip }));
+  }
+
+  public navigateMultiplayerMode(): any {
     this.router.navigate(['/multi-player']);
+    this.store.dispatch(setMode({ modeType: ModeType.PeopleVsPeople }));
   }
 }
