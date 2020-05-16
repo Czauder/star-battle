@@ -1,14 +1,16 @@
 <div class="container">
-    <div class="button">
-        <div class="example-button-container">
-            <button (click)="navigate()" mat-fab>
-                <mat-icon>home</mat-icon>
-            </button>
-        </div>
+    <div class="example-button-container">
+        <button (click)="navigate()" mat-fab>
+            <mat-icon>home</mat-icon>
+        </button>
     </div>
     <div class="title-section">
         <span class="logo">Star Wars</span>
         <span class="mode-name">Battle</span>
     </div>
-    <button mat-stroked-button>Restart Game</button>
+    <div class="example-button-container">
+        <button (click)="navigate()" mat-fab>
+            <mat-icon>refresh</mat-icon>
+        </button>
+    </div>
 </div>
