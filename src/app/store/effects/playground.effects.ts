@@ -12,7 +12,7 @@ import {
   getPlayer2Card,
   getPlayer2CardFail,
   getPlayer2CardSuccess,
-} from '../actions/playerground.action';
+} from '../actions/playground.action';
 import { GameState } from '../reducer/playground.reducer';
 import { Store } from '@ngrx/store';
 import { selectModeType } from '../selectors/playground.selectors';

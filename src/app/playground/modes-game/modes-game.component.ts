@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { GameState } from 'src/app/store/reducer/playground.reducer';
-import { setMode } from 'src/app/store/actions/playerground.action';
+import { setMode } from 'src/app/store/actions/playground.action';
 import { ModeType } from '../models/game.model';
 
 @Component({

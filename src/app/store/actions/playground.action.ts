@@ -15,6 +15,7 @@ export const incrementScorePlayer1 = createAction('[Score] Increment Score Playe
 export const incrementScorePlayer2 = createAction('[Score] Increment Score Player2');
 
 export const getPlayer1Card = createAction('[Get Card 1] Get Player 1 Card');
+
 export const getPlayer1CardSuccess = createAction(
   '[Get Card 1] Get Player 1 Card Success',
   props<{ card: GameCard }>()

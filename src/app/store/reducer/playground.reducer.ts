@@ -2,16 +2,17 @@ import { Action, createReducer, on } from '@ngrx/store';
 import { GameType, ModeType, Player } from 'src/app/playground/models/game.model';
 
 import {
-    clearGameState,
-    getPlayer1Card,
-    getPlayer1CardFail,
-    getPlayer1CardSuccess,
-    incrementScorePlayer1,
-    incrementScorePlayer2,
-    resetScore,
-    setGameType,
-    setMode,
-} from '../actions/playerground.action';
+  clearGameState,
+  getPlayer1Card,
+  getPlayer1CardFail,
+  getPlayer1CardSuccess,
+  incrementScorePlayer1,
+  incrementScorePlayer2,
+  resetScore,
+  setGameType,
+  setMode,
+  getPlayer2CardSuccess,
+} from '../actions/playground.action';
 
 export interface GameState {
   gameType: GameType;
@@ -35,7 +36,13 @@ const reducer = createReducer(
   on(getPlayer1CardSuccess, (state, action) => {
     return {
       ...state,
-      card: action.card,
+      player1: { ...state.player1, card: action.card },
+    };
+  }),
+  on(getPlayer2CardSuccess, (state, action) => {
+    return {
+      ...state,
+      player2: { ...state.player2, card: action.card },
     };
   }),
   on(getPlayer1CardFail, (state) => ({
@@ -50,21 +57,21 @@ const reducer = createReducer(
     gameType: action.gameType,
   })),
   on(clearGameState, (state) => ({
-    ...initialState
+    ...initialState,
   })),
   on(resetScore, (state) => ({
     ...state,
-    player1: {...state.player1, score: 0},
-    player2: {...state.player2, score: 0},
+    player1: { ...state.player1, score: 0 },
+    player2: { ...state.player2, score: 0 },
   })),
   on(incrementScorePlayer1, (state) => ({
     ...state,
-    player1: {...state.player1, score: state.player1.score ++},
+    player1: { ...state.player1, score: state.player1.score + 1 },
   })),
   on(incrementScorePlayer2, (state) => ({
     ...state,
-    player2: {...state.player2, score: state.player2.score ++},
-  })),
+    player2: { ...state.player2, score: state.player2.score + 1 },
+  }))
 );
 
 export function gameStateReducer(state: GameState, action: Action): GameState {

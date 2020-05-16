@@ -1,21 +1,21 @@
 <div class="container">
     <div class="card1">
-        <app-game-card></app-game-card>
+        <app-game-card [name]='nameCardPlayer1' [score]='scoreCardPlayer1'></app-game-card>
     </div>
     <div class="card2">
-        <app-game-card></app-game-card>
+        <app-game-card [name]='nameCardPlayer2' [score]='scoreCardPlayer2'></app-game-card>
     </div>
     <div class="result1">
-        <p>Win</p>
+        <p>{{ isWinner > 0 ? "Winner": "Lose"}}</p>
     </div>
     <div class="result2">
-        <p>Lose</p>
+        <p>{{ isWinner < 0 ? "Winner": "Lose"}}</p>
     </div>
     <div class="score">
-        <p>1:5</p>
+        <p>{{scorePlayer1}} : {{scorePlayer2}}</p>
     </div>
-    <div class="start-btn">
-            <i class="material-icons" aria-hidden="true">play_circle_outline
-            </i>
+    <div class="start-btn" (click)="playGame()">
+        <i class="material-icons" aria-hidden="true">play_circle_outline
+        </i>
     </div>
 </div>
