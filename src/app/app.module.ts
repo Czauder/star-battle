@@ -20,6 +20,7 @@ import { SinglePlayerArenaComponent } from './playground/battle-arena/single-pla
 import { ModesGameComponent } from './playground/modes-game/modes-game.component';
 import { gameStateReducer } from './store/reducer/playground.reducer';
 import { GameStateEffect } from './store/effects/playground.effects';
+import { ModeTypePipe } from './shared/mode-type.pipe';
 
 @NgModule({
   declarations: [
@@ -32,6 +33,7 @@ import { GameStateEffect } from './store/effects/playground.effects';
     SinglePlayerArenaComponent,
     MultiPlayersArenaComponent,
     GameCardComponent,
+    ModeTypePipe,
   ],
   imports: [
     HttpClientModule,
