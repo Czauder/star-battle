@@ -13,7 +13,6 @@ import { FooterComponent } from './footer/footer.component';
 import { HeaderComponent } from './header/header.component';
 import { LayoutComponent } from './layout/layout.component';
 import { MaterialModule } from './material/material.module';
-import { BattleArenaComponent } from './playground/battle-arena/battle-arena.component';
 import { GameCardComponent } from './playground/battle-arena/game-card/game-card.component';
 import { MultiPlayersArenaComponent } from './playground/battle-arena/multi-players-arena/multi-players-arena.component';
 import { SinglePlayerArenaComponent } from './playground/battle-arena/single-player-arena/single-player-arena.component';
@@ -31,7 +30,6 @@ import { UnknownPipe } from './shared/unknown.pipe';
     HeaderComponent,
     FooterComponent,
     ModesGameComponent,
-    BattleArenaComponent,
     SinglePlayerArenaComponent,
     MultiPlayersArenaComponent,
     GameCardComponent,
