@@ -27,7 +27,7 @@ export class SinglePlayerArenaComponent implements OnInit {
   public scoreCardPlayer2: number;
   public scorePlayer1: number;
   public scorePlayer2: number;
-  public isWinner: number;
+  public isWinner: number = null;
 
   constructor(private store: Store<GameState>) {}
 

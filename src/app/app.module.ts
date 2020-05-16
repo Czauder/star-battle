@@ -21,6 +21,8 @@ import { ModesGameComponent } from './playground/modes-game/modes-game.component
 import { gameStateReducer } from './store/reducer/playground.reducer';
 import { GameStateEffect } from './store/effects/playground.effects';
 import { ModeTypePipe } from './shared/mode-type.pipe';
+import { EmptyValuePipe } from './shared/empty-value.pipe';
+import { UnknownPipe } from './shared/unknown.pipe';
 
 @NgModule({
   declarations: [
@@ -34,6 +36,8 @@ import { ModeTypePipe } from './shared/mode-type.pipe';
     MultiPlayersArenaComponent,
     GameCardComponent,
     ModeTypePipe,
+    EmptyValuePipe,
+    UnknownPipe,
   ],
   imports: [
     HttpClientModule,
