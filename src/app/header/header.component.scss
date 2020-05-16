@@ -1,3 +1,5 @@
+@import '../../styles-library/variables.scss';
+
 .container {
   display: flex;
   justify-content: space-between;
@@ -14,5 +16,29 @@
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
+
+    .logo {
+      font-size: $fs-xl;
+      padding: 1rem;
+      font-family: $extra-font;
+      background: rgb(255, 255, 255);
+      background: linear-gradient(
+        180deg,
+        rgba(255, 255, 255, 1) 10%,
+        rgba(235, 214, 23, 1) 40%,
+        rgba(235, 214, 23, 1) 44%,
+        rgba(255, 255, 255, 1) 77%
+      );
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .mode-name {
+      font-size: $fs-h1;
+      font-family: $extra-font;
+      color: $clr-primary;
+      letter-spacing: 2px;
+      padding: 0.5rem;
+    }
   }
 }
