@@ -2,7 +2,14 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Store } from '@ngrx/store';
 import { GameState } from 'src/app/store/reducer/playground.reducer';
-import { getPlayerCards } from 'src/app/store/actions/playground.action';
+import { getPlayerCards, incrementScorePlayer1, incrementScorePlayer2 } from 'src/app/store/actions/playground.action';
+import {
+  selectPlayer1Score,
+  selectPlayer2Score,
+  selectPlayer1,
+  selectPlayer2,
+  selectCheckWinner,
+} from 'src/app/store/selectors/playground.selectors';
 
 @Component({
   selector: 'app-multi-players-arena',
@@ -18,6 +25,7 @@ export class MultiPlayersArenaComponent implements OnInit {
   public scorePlayer2: number;
   public isWinner = 0;
   public form: FormGroup;
+  public isDisabled = false;
 
   constructor(private store: Store<GameState>, private fb: FormBuilder) {}
 
@@ -27,14 +35,36 @@ export class MultiPlayersArenaComponent implements OnInit {
       buttonPlayer2Form: ['', Validators.required],
     });
 
-    console.log(this.form);
+    this.store.select(selectPlayer1).subscribe((player1) => {
+      this.nameCardPlayer1 = player1?.card?.name;
+      this.scoreCardPlayer1 = player1?.card?.score;
+    });
+
+    this.store.select(selectPlayer2).subscribe((player2) => {
+      this.nameCardPlayer2 = player2?.card?.name;
+      this.scoreCardPlayer2 = player2?.card?.score;
+    });
+
+    this.store.select(selectCheckWinner).subscribe((checkWinner) => {
+      this.isWinner = checkWinner;
+      console.log(`score: ${checkWinner}`);
+      if (checkWinner > 0) {
+        this.store.dispatch(incrementScorePlayer1());
+      }
+      if (checkWinner < 0) {
+        this.store.dispatch(incrementScorePlayer2());
+      }
+    });
+
+    this.store.select(selectPlayer1Score).subscribe((score1) => (this.scorePlayer1 = score1));
+    this.store.select(selectPlayer2Score).subscribe((score2) => (this.scorePlayer2 = score2));
   }
 
   public buttonPlayer1(): void {
     console.log('hallooo');
-    if (this.form.valid && this.form.touched) {
+    // if (this.form.valid && this.form.touched) {
       this.store.dispatch(getPlayerCards());
-    }
+    // }
   }
 
   public buttonPlayer2(): void {
@@ -43,12 +73,16 @@ export class MultiPlayersArenaComponent implements OnInit {
   }
 
   public result1(): string {
-    if (this.isWinner === null) { return null; }
+    if (this.isWinner === null) {
+      return null;
+    }
     return this.isWinner > 0 ? 'Winner' : 'Lose';
   }
 
   public result2(): string {
-    if (this.isWinner === null) { return null; }
+    if (this.isWinner === null) {
+      return null;
+    }
     return this.isWinner < 0 ? 'Winner' : 'Lose';
   }
 }

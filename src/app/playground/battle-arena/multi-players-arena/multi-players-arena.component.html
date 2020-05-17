@@ -1,23 +1,21 @@
 <div class="container" [formGroup]="form">
     <div class="card1">
-        <app-game-card></app-game-card>
+        <app-game-card [name]='nameCardPlayer1' [score]='scoreCardPlayer1'></app-game-card>
     </div>
     <div class="card2">
-        <app-game-card></app-game-card>
+        <app-game-card [name]='nameCardPlayer2' [score]='scoreCardPlayer2'></app-game-card>
     </div>
     <div class="result1">
         <p>{{ result1() | emptyValue }}</p>
-        <i class="material-icons" aria-hidden="true" (click)="buttonPlayer1()"
-            >play_circle_outline
+        <i [ngClass]="{'disable': true}" class="material-icons" aria-hidden="true" (click)="buttonPlayer1()">play_circle_outline
         </i>
     </div>
     <div class="result2">
         <p>{{ result2() | emptyValue }}</p>
-        <i class="material-icons" aria-hidden="true" (click)="buttonPlayer2()"
-          >play_circle_outline
+        <i [ngClass]="{'disable': true}" class="material-icons" aria-hidden="true" (click)="buttonPlayer2()">play_circle_outline
         </i>
     </div>
     <div class="score">
-        <p>1:5</p>
+        <p>{{scorePlayer1 }} : {{scorePlayer2 }}</p>
     </div>
 </div>

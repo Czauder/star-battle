@@ -45,4 +45,9 @@
   p {
     font-size: $fs-xl;
   }
+
+  .disable {
+    background-color: black;
+    cursor: default;
+  }
 }
