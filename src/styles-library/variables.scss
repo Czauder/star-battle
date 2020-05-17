@@ -29,3 +29,10 @@ $clr-secondary-lt: lighten($clr-secondary, 5%);
 $clr-trinary: #EBD617;
 
 
+
+// mixins 
+@mixin flex {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }

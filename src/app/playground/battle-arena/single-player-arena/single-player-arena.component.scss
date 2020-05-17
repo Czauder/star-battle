@@ -1,4 +1,5 @@
-@import '../../../../styles-library/button.scss';
+@import 'src/styles-library/button.scss';
+@import 'src/styles-library/variables.scss';
 
 .container {
   width: 100%;
@@ -11,17 +12,28 @@
   grid-template-areas: 'card1 btn card2' 'result1 score result2';
 
   .card1, .start-btn, .card2, .result1, .score, .result2 {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    @include flex;
   }
 
   .card1 {
     grid-area: card1;
+    flex-direction: column;
+    @include flex;
+
+    .player {
+      padding-bottom: 1.5rem;
+    }
   }
 
   .card2 {
     grid-area: card2;
+    flex-direction: column;
+    @include flex;
+
+    .player  {
+      padding-bottom: 1.5rem;
+      text-transform: uppercase;
+    }
   }
 
   .result1 {
