@@ -2,6 +2,8 @@
 
 # Star Wars Battle ⚔🎮
 
+It's Angular app to select random people or starships and render their details to see who would win based on a common attribute.
+
   Rules are pretty simple:
 1. Select game mode 
 2. Click main button
