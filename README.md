@@ -35,7 +35,7 @@ http://localhost:4200/home
 
 
 
-### What's included
+## What's included
 
 - [x] Layout (flex layout & CSS Grid)
 - [x] SASS
