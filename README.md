@@ -38,7 +38,7 @@ http://localhost:4200/home
 ## What's included
 
 - [x] Layout (flex layout & CSS Grid)
-- [x] SASS
+- [x] SASS (most common used functions and mixins)
 - [x] Angular Material
 - [x] Angular Pipes
 - [x] ES6 Promises and Observables
