@@ -8,6 +8,7 @@ import {
   selectPlayer1Score,
   selectPlayer2,
   selectPlayer2Score,
+  selectIsLoading,
 } from 'src/app/store/selectors/playground.selectors';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
@@ -30,29 +31,44 @@ export class SinglePlayerArenaComponent implements OnInit, OnDestroy {
   constructor(private store: Store<GameState>) {}
 
   public ngOnInit(): void {
-    this.store.select(selectPlayer1).pipe(takeUntil(this.destroy$)).subscribe((player1) => {
-      this.nameCardPlayer1 = player1?.card?.name;
-      this.scoreCardPlayer1 = player1?.card?.score;
-    });
+    this.store
+      .select(selectPlayer1)
+      .pipe(takeUntil(this.destroy$))
+      .subscribe((player1) => {
+        this.nameCardPlayer1 = player1?.card?.name;
+        this.scoreCardPlayer1 = player1?.card?.score;
+      });
 
-    this.store.select(selectPlayer2).pipe(takeUntil(this.destroy$)).subscribe((player2) => {
-      this.nameCardPlayer2 = player2?.card?.name;
-      this.scoreCardPlayer2 = player2?.card?.score;
-    });
+    this.store
+      .select(selectPlayer2)
+      .pipe(takeUntil(this.destroy$))
+      .subscribe((player2) => {
+        this.nameCardPlayer2 = player2?.card?.name;
+        this.scoreCardPlayer2 = player2?.card?.score;
+      });
 
-    this.store.select(selectCheckWinner).pipe(takeUntil(this.destroy$)).subscribe((checkWinner) => {
-      this.isWinner = checkWinner;
-      console.log(`score: ${checkWinner}`);
-      if (checkWinner > 0) {
-        this.store.dispatch(incrementScorePlayer1());
-      }
-      if (checkWinner < 0) {
-        this.store.dispatch(incrementScorePlayer2());
-      }
-    });
+    this.store
+      .select(selectCheckWinner)
+      .pipe(takeUntil(this.destroy$))
+      .subscribe((checkWinner) => {
+        this.isWinner = checkWinner;
+        console.log(`score: ${checkWinner}`);
+        if (checkWinner > 0) {
+          this.store.dispatch(incrementScorePlayer1());
+        }
+        if (checkWinner < 0) {
+          this.store.dispatch(incrementScorePlayer2());
+        }
+      });
 
-    this.store.select(selectPlayer1Score).pipe(takeUntil(this.destroy$)).subscribe((score1) => (this.scorePlayer1 = score1));
-    this.store.select(selectPlayer2Score).pipe(takeUntil(this.destroy$)).subscribe((score2) => (this.scorePlayer2 = score2));
+    this.store
+      .select(selectPlayer1Score)
+      .pipe(takeUntil(this.destroy$))
+      .subscribe((score1) => (this.scorePlayer1 = score1));
+    this.store
+      .select(selectPlayer2Score)
+      .pipe(takeUntil(this.destroy$))
+      .subscribe((score2) => (this.scorePlayer2 = score2));
   }
 
   public playGame(): void {

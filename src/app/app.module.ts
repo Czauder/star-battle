@@ -23,6 +23,7 @@ import { ModeTypePipe } from './shared/mode-type.pipe';
 import { EmptyValuePipe } from './shared/empty-value.pipe';
 import { UnknownPipe } from './shared/unknown.pipe';
 import { ReactiveFormsModule } from '@angular/forms';
+import { NgxSpinnerModule } from "ngx-spinner";
 
 @NgModule({
   declarations: [
@@ -40,6 +41,7 @@ import { ReactiveFormsModule } from '@angular/forms';
   ],
   imports: [
     HttpClientModule,
+    NgxSpinnerModule,
     ReactiveFormsModule,
     BrowserModule,
     AppRoutingModule,

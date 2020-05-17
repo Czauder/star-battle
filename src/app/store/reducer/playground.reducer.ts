@@ -9,7 +9,8 @@ import {
   incrementScorePlayer2,
   resetScore,
   setGameType,
-  setMode
+  setMode,
+  getPlayerCardsFail,
 } from '../actions/playground.action';
 
 export interface GameState {
@@ -17,6 +18,7 @@ export interface GameState {
   modeType: ModeType;
   player1: Player;
   player2: Player;
+  isLoading: boolean;
 }
 
 const initialState: GameState = {
@@ -24,18 +26,21 @@ const initialState: GameState = {
   modeType: null,
   player1: { card: null, score: 0 },
   player2: { card: null, score: 0 },
+  isLoading: false,
 };
 
 const reducer = createReducer(
   initialState,
   on(getPlayerCards, (state) => ({
     ...state,
+    isLoading: true,
   })),
   on(setPlayerCards, (state, action) => {
     return {
       ...state,
       player1: { ...state.player1, card: action.card1 },
       player2: { ...state.player2, card: action.card2 },
+      isLoading: false,
     };
   }),
   on(setMode, (state, action) => ({
@@ -61,6 +66,10 @@ const reducer = createReducer(
   on(incrementScorePlayer2, (state) => ({
     ...state,
     player2: { ...state.player2, score: state.player2.score + 1 },
+  })),
+  on(getPlayerCardsFail, (state) => ({
+    ...state,
+    isLoading: false,
   }))
 );
 
