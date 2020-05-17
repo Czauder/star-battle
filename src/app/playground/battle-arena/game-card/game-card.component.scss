@@ -1,10 +1,8 @@
 @import 'src/styles-library/variables.scss';
 
 .card {
-  display: flex;
+  @include flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
   width: 300px;
   height: 400px;
 
