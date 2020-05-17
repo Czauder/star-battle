@@ -1,6 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { getPlayerCards, incrementScorePlayer1, incrementScorePlayer2 } from 'src/app/store/actions/playground.action';
+import {
+  getPlayerCards as getPlayerCards,
+  incrementScorePlayer1,
+  incrementScorePlayer2,
+} from 'src/app/store/actions/playground.action';
 import { GameState } from 'src/app/store/reducer/playground.reducer';
 import {
   selectCheckWinner,
@@ -57,16 +61,12 @@ export class SinglePlayerArenaComponent implements OnInit {
   }
 
   public result1(): string {
-    if (this.isWinner === null) {
-      return null;
-    }
+    if (this.isWinner === null) { return null; }
     return this.isWinner > 0 ? 'Winner' : 'Lose';
   }
 
   public result2(): string {
-    if (this.isWinner === null) {
-      return null;
-    }
+    if (this.isWinner === null) { return null; }
     return this.isWinner < 0 ? 'Winner' : 'Lose';
   }
 }
