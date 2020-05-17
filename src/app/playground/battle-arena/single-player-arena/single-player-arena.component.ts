@@ -52,7 +52,6 @@ export class SinglePlayerArenaComponent implements OnInit, OnDestroy {
       .pipe(takeUntil(this.destroy$))
       .subscribe((checkWinner) => {
         this.isWinner = checkWinner;
-        console.log(`score: ${checkWinner}`);
         if (checkWinner > 0) {
           this.store.dispatch(incrementScorePlayer1());
         }
