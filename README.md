@@ -1,27 +1,49 @@
-# StarBattle
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.1.6.
 
-## Development server
+# Star Wars Battle ⚔🎮
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+  Rules are pretty simple:
+1. Select game mode 
+2. Click main button
+3. Count point
+3. Have fun 🎈
 
-## Code scaffolding
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## Get started
 
-## Build
+### Clone the repo 💣
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+```shell
+git clone https://github.com/Czauder/Star-Battle.git
+```
 
-## Running unit tests
+### Install NPM 🙌
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+Install the `npm` packages described in the `package.json` and verify that it works:
 
-## Running end-to-end tests
+```shell
+npm install
+ng serve
+```
+..and starting the game
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+```shell
+http://localhost:4200/home
+``` 
 
-## Further help
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+
+### What's included
+
+- [x] Layout (flex layout & CSS Grid)
+- [x] SASS
+- [x] Angular Material
+- [x] Angular Pipes
+- [x] ES6 Promises and Observables
+- [x] Unit tests with Jasmine and Karma (Spectator)
+- [x] NgRx state management for Angular applications
+- [x] EsLint, Prettier, Husky
+
+
+
+
