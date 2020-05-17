@@ -18,6 +18,8 @@ export const selectPlayer2Score = createSelector(selectGameState, (state) => sta
 
 export const selectIsLoading = createSelector(selectGameState, (state) => state.isLoading);
 
+export const selectIsDisplay = createSelector(selectGameState, (state) => state.isDisplay);
+
 export const selectCheckWinner = createSelector(selectGameState, (state) => {
   if (typeof state?.player1?.card?.score === 'number' && typeof state?.player2?.card?.score === 'number') {
     const player1Score = state?.player1?.card?.score;
