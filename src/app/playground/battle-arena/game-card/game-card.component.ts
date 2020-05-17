@@ -7,13 +7,7 @@ import { ModeType, Game } from '../../models/game.model';
   templateUrl: './game-card.component.html',
   styleUrls: ['./game-card.component.scss'],
 })
-export class GameCardComponent implements OnInit {
+export class GameCardComponent {
   @Input() name: string;
   @Input() score: number;
-
-  constructor() {}
-
-  ngOnInit(): void {
- 
-  }
 }

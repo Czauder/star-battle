@@ -10,8 +10,8 @@ import { GameState } from 'src/app/store/reducer/playground.reducer';
 import {
   selectCheckWinner,
   selectPlayer1,
-  selectPlayer2,
   selectPlayer1Score,
+  selectPlayer2,
   selectPlayer2Score,
 } from 'src/app/store/selectors/playground.selectors';
 
@@ -46,7 +46,7 @@ export class SinglePlayerArenaComponent implements OnInit {
 
     this.store.select(selectCheckWinner).subscribe((checkWinner) => {
       this.isWinner = checkWinner;
-      console.log(this.isWinner)
+      console.log(this.isWinner);
       if (checkWinner > 0) {
         this.store.dispatch(incrementScorePlayer1());
       }
