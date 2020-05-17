@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Store } from '@ngrx/store';
 import { GameState } from 'src/app/store/reducer/playground.reducer';
@@ -10,13 +10,16 @@ import {
   selectPlayer2,
   selectCheckWinner,
 } from 'src/app/store/selectors/playground.selectors';
+import { takeUntil } from 'rxjs/operators';
+import { Subject } from 'rxjs';
 
 @Component({
   selector: 'app-multi-players-arena',
   templateUrl: './multi-players-arena.component.html',
   styleUrls: ['./multi-players-arena.component.scss'],
 })
-export class MultiPlayersArenaComponent implements OnInit {
+ 
+export class MultiPlayersArenaComponent implements OnInit, OnDestroy {
   public nameCardPlayer1: string;
   public scoreCardPlayer1: number;
   public nameCardPlayer2: string;
@@ -25,51 +28,70 @@ export class MultiPlayersArenaComponent implements OnInit {
   public scorePlayer2: number;
   public isWinner = 0;
   public form: FormGroup;
-  public isDisabled = false;
+  public isDisable = true;
+  public destroy$ = new Subject();
 
   constructor(private store: Store<GameState>, private fb: FormBuilder) {}
 
   public ngOnInit(): void {
     this.form = this.fb.group({
-      buttonPlayer1Form: ['', Validators.required],
-      buttonPlayer2Form: ['', Validators.required],
+      buttonPlayer1Form: [false, Validators.required],
+      buttonPlayer2Form: [false, Validators.required],
     });
 
-    this.store.select(selectPlayer1).subscribe((player1) => {
-      this.nameCardPlayer1 = player1?.card?.name;
-      this.scoreCardPlayer1 = player1?.card?.score;
-    });
+    this.store
+      .select(selectPlayer1)
+      .pipe(takeUntil(this.destroy$))
+      .subscribe((player1) => {
+        this.nameCardPlayer1 = player1?.card?.name;
+        this.scoreCardPlayer1 = player1?.card?.score;
+      });
 
-    this.store.select(selectPlayer2).subscribe((player2) => {
-      this.nameCardPlayer2 = player2?.card?.name;
-      this.scoreCardPlayer2 = player2?.card?.score;
-    });
+    this.store
+      .select(selectPlayer2)
+      .pipe(takeUntil(this.destroy$))
+      .subscribe((player2) => {
+        this.nameCardPlayer2 = player2?.card?.name;
+        this.scoreCardPlayer2 = player2?.card?.score;
+      });
 
-    this.store.select(selectCheckWinner).subscribe((checkWinner) => {
-      this.isWinner = checkWinner;
-      console.log(`score: ${checkWinner}`);
-      if (checkWinner > 0) {
-        this.store.dispatch(incrementScorePlayer1());
+    this.store
+      .select(selectCheckWinner)
+      .pipe(takeUntil(this.destroy$))
+      .subscribe((checkWinner) => {
+        this.isWinner = checkWinner;
+        console.log(`score: ${checkWinner}`);
+        if (checkWinner > 0) {
+          this.store.dispatch(incrementScorePlayer1());
+        }
+        if (checkWinner < 0) {
+          this.store.dispatch(incrementScorePlayer2());
+        }
+      });
+
+    this.store
+      .select(selectPlayer1Score)
+      .pipe(takeUntil(this.destroy$))
+      .subscribe((score1) => (this.scorePlayer1 = score1));
+    this.store
+      .select(selectPlayer2Score)
+      .pipe(takeUntil(this.destroy$))
+      .subscribe((score2) => (this.scorePlayer2 = score2));
+
+    this.form.valueChanges.pipe(takeUntil(this.destroy$)).subscribe((value) => {
+      if (value.buttonPlayer1Form && value.buttonPlayer2Form) {
+        this.store.dispatch(getPlayerCards());
+        this.form.reset();
       }
-      if (checkWinner < 0) {
-        this.store.dispatch(incrementScorePlayer2());
-      }
     });
-
-    this.store.select(selectPlayer1Score).subscribe((score1) => (this.scorePlayer1 = score1));
-    this.store.select(selectPlayer2Score).subscribe((score2) => (this.scorePlayer2 = score2));
   }
 
   public buttonPlayer1(): void {
-    console.log('hallooo');
-    // if (this.form.valid && this.form.touched) {
-      this.store.dispatch(getPlayerCards());
-    // }
+    this.form.get('buttonPlayer1Form').setValue(true);
   }
 
   public buttonPlayer2(): void {
-    console.log('hallooo2');
-    // console.log(this.form.value);
+    this.form.get('buttonPlayer2Form').setValue(true);
   }
 
   public result1(): string {
@@ -84,5 +106,9 @@ export class MultiPlayersArenaComponent implements OnInit {
       return null;
     }
     return this.isWinner < 0 ? 'Winner' : 'Lose';
+  }
+
+  public ngOnDestroy(): void {
+    this.destroy$.next();
   }
 }

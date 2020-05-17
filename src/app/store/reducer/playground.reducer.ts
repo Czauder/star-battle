@@ -51,8 +51,8 @@ const reducer = createReducer(
   })),
   on(resetScore, (state) => ({
     ...state,
-    player1: { ...state.player1, score: 0 },
-    player2: { ...state.player2, score: 0 },
+    player1: { ...state.player1, score: 0, card: null },
+    player2: { ...state.player2, score: 0, card: null },
   })),
   on(incrementScorePlayer1, (state) => ({
     ...state,

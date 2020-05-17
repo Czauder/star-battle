@@ -10,7 +10,12 @@
   gap: 1px 1px;
   grid-template-areas: 'card1 score card2' 'result1 . result2';
 
-  .card1, .start-btn, .card2, .result1, .score, .result2 {
+  .card1,
+  .start-btn,
+  .card2,
+  .result1,
+  .score,
+  .result2 {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -49,5 +54,9 @@
   .disable {
     background-color: black;
     cursor: default;
+  }
+
+  .input {
+    display: hidden;
   }
 }

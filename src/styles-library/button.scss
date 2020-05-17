@@ -1,6 +1,7 @@
 @import './variables.scss';
 
 i.material-icons {
+  user-select: none;
     outline: none;
     margin: 1em 0;
     font-size: 1.5rem;
@@ -15,6 +16,7 @@ i.material-icons {
   
   i.material-icons:after {
     content: "";
+    user-select: none;
     width: 100%;
     height: 100%;
     border: solid 2px;
@@ -27,6 +29,7 @@ i.material-icons {
   }
   
   i.material-icons:hover:after {
+    user-select: none;
     transform: scale(1);
     box-shadow: 10px 0 20px rgba(0, 0, 0, 0.19), 6px 0 6px rgba(0, 0, 0, 0.23);
   }
