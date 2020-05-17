@@ -18,7 +18,6 @@ import { Subject } from 'rxjs';
   templateUrl: './multi-players-arena.component.html',
   styleUrls: ['./multi-players-arena.component.scss'],
 })
- 
 export class MultiPlayersArenaComponent implements OnInit, OnDestroy {
   public nameCardPlayer1: string;
   public scoreCardPlayer1: number;
@@ -28,7 +27,6 @@ export class MultiPlayersArenaComponent implements OnInit, OnDestroy {
   public scorePlayer2: number;
   public isWinner = 0;
   public form: FormGroup;
-  public isDisable = true;
   public destroy$ = new Subject();
 
   constructor(private store: Store<GameState>, private fb: FormBuilder) {}
@@ -110,5 +108,13 @@ export class MultiPlayersArenaComponent implements OnInit, OnDestroy {
 
   public ngOnDestroy(): void {
     this.destroy$.next();
+  }
+
+  public get ButtonValue1(): boolean {
+    return this.form.get('buttonPlayer1Form').value;
+  }
+
+  public get ButtonValue2(): boolean {
+    return this.form.get('buttonPlayer2Form').value;
   }
 }

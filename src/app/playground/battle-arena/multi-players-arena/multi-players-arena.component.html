@@ -8,13 +8,13 @@
     <div class="result1">
         <p>{{ result1() | emptyValue }}</p>
         <input formControlName="buttonPlayer1Form" type="checkbox">
-        <i [ngClass]="{'disable': isDisable}" class="material-icons" aria-hidden="true" (click)="buttonPlayer1()">play_circle_outline
+        <i *ngIf="!ButtonValue1" class="material-icons" aria-hidden="true" (click)="buttonPlayer1()">play_circle_outline
         </i>
     </div>
     <div class="result2">
         <p>{{ result2() | emptyValue }}</p>
         <input formControlName="buttonPlayer2Form" type="checkbox">
-        <i *ngIf="isDisable" class="material-icons" aria-hidden="true" (click)="buttonPlayer2()">play_circle_outline
+        <i *ngIf="!ButtonValue2" class="material-icons" aria-hidden="true" (click)="buttonPlayer2()">play_circle_outline
         </i>
     </div>
     <div class="score">
