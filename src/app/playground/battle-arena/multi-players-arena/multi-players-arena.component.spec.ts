@@ -3,6 +3,7 @@ import { provideMockStore } from '@ngrx/store/testing';
 import { EmptyValuePipe } from 'src/app/shared/empty-value.pipe';
 
 import { MultiPlayersArenaComponent } from './multi-players-arena.component';
+import { FormBuilder } from '@angular/forms';
 
 describe('MultiPlayersArenaComponent', () => {
   let spectator: SpectatorHost<MultiPlayersArenaComponent>;
@@ -10,7 +11,7 @@ describe('MultiPlayersArenaComponent', () => {
     detectChanges: false,
     declarations: [EmptyValuePipe],
     component: MultiPlayersArenaComponent,
-    providers: [provideMockStore({})],
+    providers: [provideMockStore({}), FormBuilder],
   });
 
   beforeEach(() => {

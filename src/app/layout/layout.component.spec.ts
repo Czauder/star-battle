@@ -8,6 +8,7 @@ describe('LayoutComponent', () => {
   const createComponent = createHostFactory({
     detectChanges: false,
     component: LayoutComponent,
+    providers: [provideMockStore({})],
   });
 
   beforeEach(() => {
