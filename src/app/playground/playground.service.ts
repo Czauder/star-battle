@@ -15,7 +15,7 @@ export class PlaygroundService {
   constructor(private http: HttpClient) {}
 
   private randomPersonNumber(): number {
-    return Math.floor(Math.random() * (50 - 1 + 1) + 1);
+    return  Math.floor(Math.random() * (50 - 1 + 1) + 1);
   }
 
   private randomStarshipNumber(): number {
@@ -23,7 +23,7 @@ export class PlaygroundService {
   }
 
   private getPerson(): Observable<GameCard> {
-    return this.http.get<Person>(`https://swapi.dev/api/people/${this.randomPersonNumber()}/`).pipe(
+    return this.http.get<Person>(`https://swapi.dev/api/people/${this.randomPersonNumber()}`).pipe(
       map((person) => {
         return {
           name: person.name,
@@ -34,7 +34,7 @@ export class PlaygroundService {
   }
 
   private getStarship(): Observable<GameCard> {
-    return this.http.get<Starship>(`https://swapi.dev/api/starships/${this.randomStarshipNumber()}/`).pipe(
+    return this.http.get<Starship>(`https://swapi.dev/api/starships/${this.randomStarshipNumber()}`).pipe(
       map((starship) => {
         return {
           name: starship.name,

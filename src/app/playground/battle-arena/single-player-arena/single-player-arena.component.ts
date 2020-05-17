@@ -27,7 +27,7 @@ export class SinglePlayerArenaComponent implements OnInit {
   public scoreCardPlayer2: number;
   public scorePlayer1: number;
   public scorePlayer2: number;
-  public isWinner: number = null;
+  public isWinner = 0;
 
   constructor(private store: Store<GameState>) {}
 
@@ -46,6 +46,7 @@ export class SinglePlayerArenaComponent implements OnInit {
 
     this.store.select(selectCheckWinner).subscribe((checkWinner) => {
       this.isWinner = checkWinner;
+      console.log(this.isWinner)
       if (checkWinner > 0) {
         this.store.dispatch(incrementScorePlayer1());
       }

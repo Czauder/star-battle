@@ -1,25 +1,22 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { Router } from '@angular/router';
+import { createHostFactory, mockProvider, SpectatorHost } from '@ngneat/spectator';
+import { provideMockStore } from '@ngrx/store/testing';
 
 import { ModesGameComponent } from './modes-game.component';
 
 describe('ModesGameComponent', () => {
-  let component: ModesGameComponent;
-  let fixture: ComponentFixture<ModesGameComponent>;
-
-  beforeEach(async(() => {
-    TestBed.configureTestingModule({
-      declarations: [ ModesGameComponent ]
-    })
-    .compileComponents();
-  }));
+  let spectator: SpectatorHost<ModesGameComponent>;
+  const createComponent = createHostFactory({
+    detectChanges: false,
+    component: ModesGameComponent,
+    providers: [provideMockStore({}), mockProvider(Router)],
+  });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ModesGameComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
+    spectator = createComponent<ModesGameComponent>(`<app-modes-game></app-modes-game>`);
   });
 
   it('should create', () => {
-    expect(component).toBeTruthy();
+    expect(spectator.component).toBeDefined();
   });
 });

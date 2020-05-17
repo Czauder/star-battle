@@ -1,25 +1,24 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { GameCardComponent } from './game-card.component';
+import { createHostFactory, mockProvider, SpectatorHost } from '@ngneat/spectator';
+import { provideMockStore } from '@ngrx/store/testing';
+import { EmptyValuePipe } from 'src/app/shared/empty-value.pipe';
+import { UnknownPipe } from 'src/app/shared/unknown.pipe';
 
 describe('GameCardComponent', () => {
-  let component: GameCardComponent;
-  let fixture: ComponentFixture<GameCardComponent>;
-
-  beforeEach(async(() => {
-    TestBed.configureTestingModule({
-      declarations: [ GameCardComponent ]
-    })
-    .compileComponents();
-  }));
+  let spectator: SpectatorHost<GameCardComponent>;
+  const createComponent = createHostFactory({
+    detectChanges: false,
+    component: GameCardComponent,
+    declarations: [EmptyValuePipe, UnknownPipe],
+    imports: [],
+    providers: [provideMockStore({})],
+  });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(GameCardComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
+    spectator = createComponent<GameCardComponent>(`<app-game-card></app-game-card>`);
   });
 
   it('should create', () => {
-    expect(component).toBeTruthy();
+    expect(spectator.component).toBeDefined();
   });
 });

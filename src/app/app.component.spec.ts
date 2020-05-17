@@ -1,35 +1,19 @@
-import { TestBed, async } from '@angular/core/testing';
-import { RouterTestingModule } from '@angular/router/testing';
+import { createHostFactory, SpectatorHost } from '@ngneat/spectator';
+
 import { AppComponent } from './app.component';
 
 describe('AppComponent', () => {
-  beforeEach(async(() => {
-    TestBed.configureTestingModule({
-      imports: [
-        RouterTestingModule
-      ],
-      declarations: [
-        AppComponent
-      ],
-    }).compileComponents();
-  }));
-
-  it('should create the app', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.componentInstance;
-    expect(app).toBeTruthy();
+  let spectator: SpectatorHost<AppComponent>;
+  const createComponent = createHostFactory({
+    detectChanges: false,
+    component: AppComponent,
   });
 
-  it(`should have as title 'star-battle'`, () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.componentInstance;
-    expect(app.title).toEqual('star-battle');
+  beforeEach(() => {
+    spectator = createComponent<AppComponent>(`<app-root></app-root>`);
   });
 
-  it('should render title', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    fixture.detectChanges();
-    const compiled = fixture.nativeElement;
-    expect(compiled.querySelector('.content span').textContent).toContain('star-battle app is running!');
+  it('should create', () => {
+    expect(spectator.component).toBeDefined();
   });
 });

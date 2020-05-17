@@ -1,25 +1,20 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { createHostFactory, SpectatorHost } from '@ngneat/spectator';
+import { provideMockStore } from '@ngrx/store/testing';
 
 import { FooterComponent } from './footer.component';
 
 describe('FooterComponent', () => {
-  let component: FooterComponent;
-  let fixture: ComponentFixture<FooterComponent>;
-
-  beforeEach(async(() => {
-    TestBed.configureTestingModule({
-      declarations: [ FooterComponent ]
-    })
-    .compileComponents();
-  }));
+  let spectator: SpectatorHost<FooterComponent>;
+  const createComponent = createHostFactory({
+    detectChanges: false,
+    component: FooterComponent
+  });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(FooterComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
+    spectator = createComponent<FooterComponent>(`<app-footer></app-footer>`);
   });
 
   it('should create', () => {
-    expect(component).toBeTruthy();
+    expect(spectator.component).toBeDefined();
   });
 });

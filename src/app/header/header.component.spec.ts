@@ -1,25 +1,24 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { createHostFactory, SpectatorHost, mockProvider } from '@ngneat/spectator';
+import { provideMockStore } from '@ngrx/store/testing';
 
 import { HeaderComponent } from './header.component';
+import { Router } from '@angular/router';
+import { ModeTypePipe } from '../shared/mode-type.pipe';
 
 describe('HeaderComponent', () => {
-  let component: HeaderComponent;
-  let fixture: ComponentFixture<HeaderComponent>;
-
-  beforeEach(async(() => {
-    TestBed.configureTestingModule({
-      declarations: [ HeaderComponent ]
-    })
-    .compileComponents();
-  }));
+  let spectator: SpectatorHost<HeaderComponent>;
+  const createComponent = createHostFactory({
+    detectChanges: false,
+    component: HeaderComponent,
+    declarations: [ModeTypePipe],
+    providers: [provideMockStore({}), mockProvider(Router)],
+  });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(HeaderComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
+    spectator = createComponent<HeaderComponent>(`<app-header></app-header>`);
   });
 
   it('should create', () => {
-    expect(component).toBeTruthy();
+    expect(spectator.component).toBeDefined();
   });
 });

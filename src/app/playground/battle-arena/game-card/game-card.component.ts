@@ -11,7 +11,7 @@ export class GameCardComponent implements OnInit {
   @Input() name: string;
   @Input() score: number;
 
-  constructor(private playgroundService: PlaygroundService) {}
+  constructor() {}
 
   ngOnInit(): void {
  

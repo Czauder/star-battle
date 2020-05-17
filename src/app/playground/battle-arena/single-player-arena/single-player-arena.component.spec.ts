@@ -1,25 +1,22 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { createHostFactory, SpectatorHost } from '@ngneat/spectator';
+import { provideMockStore } from '@ngrx/store/testing';
+import { EmptyValuePipe } from 'src/app/shared/empty-value.pipe';
 import { SinglePlayerArenaComponent } from './single-player-arena.component';
 
 describe('SinglePlayerArenaComponent', () => {
-  let component: SinglePlayerArenaComponent;
-  let fixture: ComponentFixture<SinglePlayerArenaComponent>;
-
-  beforeEach(async(() => {
-    TestBed.configureTestingModule({
-      declarations: [ SinglePlayerArenaComponent ]
-    })
-    .compileComponents();
-  }));
+  let spectator: SpectatorHost<SinglePlayerArenaComponent>;
+  const createComponent = createHostFactory({
+    detectChanges: false,
+    declarations: [EmptyValuePipe],
+    component: SinglePlayerArenaComponent,
+    providers: [provideMockStore({})],
+  });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(SinglePlayerArenaComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
+    spectator = createComponent<SinglePlayerArenaComponent>(`<app-single-player-arena></app-single-player-arena>`);
   });
 
   it('should create', () => {
-    expect(component).toBeTruthy();
+    expect(spectator.component).toBeDefined();
   });
 });
