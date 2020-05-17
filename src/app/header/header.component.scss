@@ -8,9 +8,6 @@
   height: 100%;
   margin: 0 auto;
 
-  .button {
-  }
-
   .title-section {
     display: flex;
     flex-direction: column;
@@ -21,7 +18,7 @@
       font-size: $fs-xl;
       padding: 1rem;
       font-family: $extra-font;
-      background: rgb(255, 255, 255);
+      background: $clr-primary;
       background: linear-gradient(
         180deg,
         rgba(255, 255, 255, 1) 10%,

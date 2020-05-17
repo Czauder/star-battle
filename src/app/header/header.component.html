@@ -1,6 +1,6 @@
 <div class="container">
     <div class="example-button-container">
-        <button (click)="navigate()" mat-fab>
+        <button (click)="navigate()" mat-fab *ngIf="isDisplay">
             <mat-icon>home</mat-icon>
         </button>
     </div>
@@ -9,7 +9,7 @@
         <span class="mode-name">{{ modeType | type }}</span>
     </div>
     <div class="example-button-container">
-        <button (click)="resetGame()" mat-fab>
+        <button (click)="resetGame()" mat-fab  *ngIf="isDisplay">
             <mat-icon>refresh</mat-icon>
         </button>
     </div>

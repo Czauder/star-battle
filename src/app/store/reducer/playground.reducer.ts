@@ -19,6 +19,7 @@ export interface GameState {
   player1: Player;
   player2: Player;
   isLoading: boolean;
+  isDisplay: boolean;
 }
 
 const initialState: GameState = {
@@ -27,6 +28,7 @@ const initialState: GameState = {
   player1: { card: null, score: 0 },
   player2: { card: null, score: 0 },
   isLoading: false,
+  isDisplay: false
 };
 
 const reducer = createReducer(
@@ -46,6 +48,7 @@ const reducer = createReducer(
   on(setMode, (state, action) => ({
     ...state,
     modeType: action.modeType,
+    isDisplay: true,
   })),
   on(setGameType, (state, action) => ({
     ...state,
