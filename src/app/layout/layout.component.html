@@ -1,0 +1,14 @@
+<ngx-spinner bdColor="rgba(0, 0, 0, 0.8)" size="large" color="#fff" type="ball-8bits" [fullScreen]="true">
+    <p style="color: white"> Loading... </p>
+    </ngx-spinner>
+    <div class="container-app">
+        <div class="section-title">
+            <app-header></app-header>
+        </div>
+        <div class="section-game">
+            <router-outlet></router-outlet>
+        </div>
+        <div class="section-footer">
+            <app-footer></app-footer>
+        </div>
+    </div>
