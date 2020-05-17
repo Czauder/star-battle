@@ -1,10 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
-import {
-  getPlayerCards as getPlayerCards,
-  incrementScorePlayer1,
-  incrementScorePlayer2,
-} from 'src/app/store/actions/playground.action';
+import { getPlayerCards, incrementScorePlayer1, incrementScorePlayer2 } from 'src/app/store/actions/playground.action';
 import { GameState } from 'src/app/store/reducer/playground.reducer';
 import {
   selectCheckWinner,
@@ -53,7 +49,6 @@ export class SinglePlayerArenaComponent implements OnInit {
     });
 
     this.store.select(selectPlayer1Score).subscribe((score1) => (this.scorePlayer1 = score1));
-    console.log(`score1: ${this.score1}`)
     this.store.select(selectPlayer2Score).subscribe((score2) => (this.scorePlayer2 = score2));
   }
 
@@ -61,13 +56,17 @@ export class SinglePlayerArenaComponent implements OnInit {
     this.store.dispatch(getPlayerCards());
   }
 
-  public score1(): string {
-    if (this.isWinner === null) { return null; }
+  public result1(): string {
+    if (this.isWinner === null) {
+      return null;
+    }
     return this.isWinner > 0 ? 'Winner' : 'Lose';
   }
 
-  public score2(): string {
-    if (this.isWinner === null) { return null; }
+  public result2(): string {
+    if (this.isWinner === null) {
+      return null;
+    }
     return this.isWinner < 0 ? 'Winner' : 'Lose';
   }
 }

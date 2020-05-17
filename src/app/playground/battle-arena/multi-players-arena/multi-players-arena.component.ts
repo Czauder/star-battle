@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Store } from '@ngrx/store';
 import { GameState } from 'src/app/store/reducer/playground.reducer';
+import { getPlayerCards } from 'src/app/store/actions/playground.action';
 
 @Component({
   selector: 'app-multi-players-arena',
@@ -21,22 +22,33 @@ export class MultiPlayersArenaComponent implements OnInit {
   constructor(private store: Store<GameState>, private fb: FormBuilder) {}
 
   public ngOnInit(): void {
-
     this.form = this.fb.group({
       buttonPlayer1Form: ['', Validators.required],
       buttonPlayer2Form: ['', Validators.required],
     });
 
-    console.log(this.form)
+    console.log(this.form);
   }
 
   public buttonPlayer1(): void {
     console.log('hallooo');
-    // console.log(this.form.value);
+    if (this.form.valid && this.form.touched) {
+      this.store.dispatch(getPlayerCards());
+    }
   }
 
   public buttonPlayer2(): void {
     console.log('hallooo2');
     // console.log(this.form.value);
+  }
+
+  public result1(): string {
+    if (this.isWinner === null) { return null; }
+    return this.isWinner > 0 ? 'Winner' : 'Lose';
+  }
+
+  public result2(): string {
+    if (this.isWinner === null) { return null; }
+    return this.isWinner < 0 ? 'Winner' : 'Lose';
   }
 }

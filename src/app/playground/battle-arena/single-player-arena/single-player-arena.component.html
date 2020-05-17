@@ -6,13 +6,13 @@
         <app-game-card [name]='nameCardPlayer2' [score]='scoreCardPlayer2'></app-game-card>
     </div>
     <div class="result1">
-        <p>{{ score1() | emptyValue }}</p>
+        <p>{{ result1() | emptyValue }}</p>
     </div>
     <div class="result2">
-        <p>{{ score2() | emptyValue }}</p>
+        <p>{{ result2() | emptyValue }}</p>
     </div>
     <div class="score">
-        <p>{{ scorePlayer1 }} : {{ scorePlayer2 }}</p>
+        <p>{{scorePlayer1 }} : {{scorePlayer2 }}</p>
     </div>
     <div class="start-btn">
         <i (click)="playGame()" class="material-icons" aria-hidden="true">play_circle_outline
