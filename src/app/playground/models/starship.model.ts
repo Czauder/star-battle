@@ -1,4 +1,4 @@
 export interface Starship {
-  crew: number;
+  crew: string;
   name: string;
 }

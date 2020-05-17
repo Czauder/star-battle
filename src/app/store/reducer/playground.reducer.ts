@@ -3,15 +3,13 @@ import { GameType, ModeType, Player } from 'src/app/playground/models/game.model
 
 import {
   clearGameState,
-  getPlayer1Card,
-  getPlayer1CardFail,
-  getPlayer1CardSuccess,
+  getPlayerCards,
+  setPlayerCards,
   incrementScorePlayer1,
   incrementScorePlayer2,
   resetScore,
   setGameType,
-  setMode,
-  getPlayer2CardSuccess,
+  setMode
 } from '../actions/playground.action';
 
 export interface GameState {
@@ -30,24 +28,16 @@ const initialState: GameState = {
 
 const reducer = createReducer(
   initialState,
-  on(getPlayer1Card, (state) => ({
+  on(getPlayerCards, (state) => ({
     ...state,
   })),
-  on(getPlayer1CardSuccess, (state, action) => {
+  on(setPlayerCards, (state, action) => {
     return {
       ...state,
-      player1: { ...state.player1, card: action.card },
+      player1: { ...state.player1, card: action.card1 },
+      player2: { ...state.player2, card: action.card2 },
     };
   }),
-  on(getPlayer2CardSuccess, (state, action) => {
-    return {
-      ...state,
-      player2: { ...state.player2, card: action.card },
-    };
-  }),
-  on(getPlayer1CardFail, (state) => ({
-    ...state,
-  })),
   on(setMode, (state, action) => ({
     ...state,
     modeType: action.modeType,

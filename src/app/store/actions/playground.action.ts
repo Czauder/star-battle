@@ -14,19 +14,14 @@ export const incrementScorePlayer1 = createAction('[Score] Increment Score Playe
 
 export const incrementScorePlayer2 = createAction('[Score] Increment Score Player2');
 
-export const getPlayer1Card = createAction('[Get Card 1] Get Player 1 Card');
+export const getPlayerCards = createAction('[Get Cards] Get Player Cards');
 
-export const getPlayer1CardSuccess = createAction(
-  '[Get Card 1] Get Player 1 Card Success',
-  props<{ card: GameCard }>()
+export const getPlayerCardsFail = createAction('[Get Cards] Get Player Cards Fail');
+
+export const setPlayerCards = createAction(
+  '[Set Cards] Set Player Cards Success',
+  props<{ card1: GameCard, card2: GameCard }>()
 );
 
-export const getPlayer1CardFail = createAction('[Get Card 1] Get Player 1 Card Fail');
 
-export const getPlayer2Card = createAction('[Get Card 2] Get Player 2 Card');
-export const getPlayer2CardSuccess = createAction(
-  '[Get Card 2] Get Player 2 Card Success',
-  props<{ card: GameCard }>()
-);
 
-export const getPlayer2CardFail = createAction('[Get Card 2] Get Player Card 2 Fail');

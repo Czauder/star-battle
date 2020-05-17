@@ -18,10 +18,11 @@ import { MultiPlayersArenaComponent } from './playground/battle-arena/multi-play
 import { SinglePlayerArenaComponent } from './playground/battle-arena/single-player-arena/single-player-arena.component';
 import { ModesGameComponent } from './playground/modes-game/modes-game.component';
 import { gameStateReducer } from './store/reducer/playground.reducer';
-import { GameStateEffect } from './store/effects/playground.effects';
+import { GameCardEffect } from './store/effects/playground.effects';
 import { ModeTypePipe } from './shared/mode-type.pipe';
 import { EmptyValuePipe } from './shared/empty-value.pipe';
 import { UnknownPipe } from './shared/unknown.pipe';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -39,12 +40,13 @@ import { UnknownPipe } from './shared/unknown.pipe';
   ],
   imports: [
     HttpClientModule,
+    ReactiveFormsModule,
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     MaterialModule,
     StoreModule.forRoot({ GameState: gameStateReducer }),
-    EffectsModule.forRoot([GameStateEffect]),
+    EffectsModule.forRoot([GameCardEffect]),
     StoreDevtoolsModule.instrument({
       maxAge: 25, // Retains last 25 states
       logOnly: environment.production, // Restrict extension to log-only mode

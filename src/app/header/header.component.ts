@@ -16,10 +16,7 @@ export class HeaderComponent implements OnInit {
   constructor(private router: Router, private store: Store<GameState>) {}
 
   public ngOnInit(): void {
-    this.store.select(selectModeType).subscribe((mode) => {
-      console.log(mode);
-      this.modeType = mode;
-    });
+    this.store.select(selectModeType).subscribe((mode) => (this.modeType = mode));
   }
 
   public navigate(): any {

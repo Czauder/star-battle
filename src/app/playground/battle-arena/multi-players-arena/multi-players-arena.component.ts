@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { GameState } from 'src/app/store/reducer/playground.reducer';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Store } from '@ngrx/store';
-import { selectCheckWinner } from 'src/app/store/selectors/playground.selectors';
+import { GameState } from 'src/app/store/reducer/playground.reducer';
 
 @Component({
   selector: 'app-multi-players-arena',
@@ -9,14 +9,34 @@ import { selectCheckWinner } from 'src/app/store/selectors/playground.selectors'
   styleUrls: ['./multi-players-arena.component.scss'],
 })
 export class MultiPlayersArenaComponent implements OnInit {
-  public selectWinner: number;
+  public nameCardPlayer1: string;
+  public scoreCardPlayer1: number;
+  public nameCardPlayer2: string;
+  public scoreCardPlayer2: number;
+  public scorePlayer1: number;
+  public scorePlayer2: number;
+  public isWinner = 0;
+  public form: FormGroup;
 
-  constructor(private store: Store<GameState>) {}
+  constructor(private store: Store<GameState>, private fb: FormBuilder) {}
 
   public ngOnInit(): void {
+
+    this.form = this.fb.group({
+      buttonPlayer1Form: ['', Validators.required],
+      buttonPlayer2Form: ['', Validators.required],
+    });
+
+    console.log(this.form)
   }
 
-  public playGame(): void {
-    this.store.select(selectCheckWinner).subscribe((winner) => (this.selectWinner = winner));
+  public buttonPlayer1(): void {
+    console.log('hallooo');
+    // console.log(this.form.value);
+  }
+
+  public buttonPlayer2(): void {
+    console.log('hallooo2');
+    // console.log(this.form.value);
   }
 }

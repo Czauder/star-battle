@@ -19,7 +19,7 @@ export class PlaygroundService {
   }
 
   private randomStarshipNumber(): number {
-    return Math.floor(Math.random() * (10 - 1 + 1) + 1);
+    return Math.floor(Math.random() * (36 - 1 + 1) + 1);
   }
 
   private getPerson(): Observable<GameCard> {
@@ -27,7 +27,7 @@ export class PlaygroundService {
       map((person) => {
         return {
           name: person.name,
-          score: person.mass,
+          score: person.mass === 'unknown' ? null : parseFloat(person.mass),
         };
       })
     );
@@ -38,7 +38,7 @@ export class PlaygroundService {
       map((starship) => {
         return {
           name: starship.name,
-          score: starship.crew,
+          score: starship.crew === 'unknown' ? null : parseFloat(starship.crew),
         };
       })
     );

@@ -1,6 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { PlaygroundService } from '../../playground.service';
-import { ModeType, Game } from '../../models/game.model';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-game-card',

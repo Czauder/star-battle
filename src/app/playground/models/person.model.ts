@@ -1,6 +1,6 @@
 export interface Person {
   gender: string;
-  mass: number;
+  mass: string;
   name: string;
 }
 

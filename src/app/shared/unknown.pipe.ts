@@ -5,7 +5,7 @@ import { Pipe, PipeTransform } from '@angular/core';
 })
 export class UnknownPipe implements PipeTransform {
   public transform(value: string | number, arg: string = '💣'): string | number {
-    if (value === 'unknown' || value === undefined) {
+    if (value === null || value === undefined) {
       return arg;
     }
     return value;
