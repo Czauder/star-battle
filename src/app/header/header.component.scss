@@ -15,6 +15,7 @@
     align-items: center;
 
     .logo {
+      user-select: none;
       font-size: $fs-xl;
       padding: 1rem;
       font-family: $extra-font;
@@ -31,6 +32,7 @@
     }
 
     .mode-name {
+      user-select: none;
       font-size: $fs-h1;
       font-family: $extra-font;
       color: $clr-primary;
