@@ -1,5 +1,7 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
+import { Subject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
 import { getPlayerCards, incrementScorePlayer1, incrementScorePlayer2 } from 'src/app/store/actions/playground.action';
 import { GameState } from 'src/app/store/reducer/playground.reducer';
 import {
@@ -8,10 +10,7 @@ import {
   selectPlayer1Score,
   selectPlayer2,
   selectPlayer2Score,
-  selectIsLoading,
 } from 'src/app/store/selectors/playground.selectors';
-import { Subject } from 'rxjs';
-import { takeUntil } from 'rxjs/operators';
 
 @Component({
   selector: 'app-single-player-arena',

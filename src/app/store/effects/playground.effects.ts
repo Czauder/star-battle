@@ -1,13 +1,12 @@
 import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
-import { of, forkJoin, observable } from 'rxjs';
-import { catchError, map, switchMap, withLatestFrom, mergeMap } from 'rxjs/operators';
-import { ModeType } from 'src/app/playground/models/game.model';
+import { Store } from '@ngrx/store';
+import { forkJoin, of } from 'rxjs';
+import { catchError, map, switchMap, withLatestFrom } from 'rxjs/operators';
 import { PlaygroundService } from 'src/app/playground/playground.service';
 
-import { getPlayerCards, setPlayerCards, getPlayerCardsFail } from '../actions/playground.action';
+import { getPlayerCards, getPlayerCardsFail, setPlayerCards } from '../actions/playground.action';
 import { GameState } from '../reducer/playground.reducer';
-import { Store } from '@ngrx/store';
 import { selectModeType } from '../selectors/playground.selectors';
 
 @Injectable()
@@ -18,7 +17,7 @@ export class GameCardEffect {
       withLatestFrom(this.store.select(selectModeType)),
       switchMap(([action, mode]) =>
         forkJoin([this.playgroundService.getCardGame(mode), this.playgroundService.getCardGame(mode)]).pipe(
-          mergeMap(([gameCard1, gameCard2]) => [setPlayerCards({ card1: gameCard1, card2: gameCard2 })]),
+          map(([gameCard1, gameCard2]) => setPlayerCards({ card1: gameCard1, card2: gameCard2 })),
           catchError((error) => of(getPlayerCardsFail()))
         )
       )

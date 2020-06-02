@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { GameState } from '../store/reducer/playground.reducer';
 import { Store } from '@ngrx/store';
+
 import { ModeType } from '../playground/models/game.model';
-import { selectModeType, selectIsDisplay } from '../store/selectors/playground.selectors';
-import { resetScore, clearGameState } from '../store/actions/playground.action';
+import { clearGameState, resetScore } from '../store/actions/playground.action';
+import { GameState } from '../store/reducer/playground.reducer';
+import { selectIsDisplay, selectModeType } from '../store/selectors/playground.selectors';
 
 @Component({
   selector: 'app-header',
@@ -21,7 +22,7 @@ export class HeaderComponent implements OnInit {
     this.store.select(selectIsDisplay).subscribe((display) => (this.isDisplay = display));
   }
 
-  public navigate(): any {
+  public navigateToHome(): any {
     this.router.navigate(['/home']);
     this.store.dispatch(clearGameState());
   }

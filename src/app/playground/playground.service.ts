@@ -4,9 +4,9 @@ import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
 import { GameCard } from './models/game-card.model';
+import { ModeType } from './models/game.model';
 import { Person } from './models/person.model';
 import { Starship } from './models/starship.model';
-import { ModeType } from './models/game.model';
 
 @Injectable({
   providedIn: 'root',
@@ -15,11 +15,11 @@ export class PlaygroundService {
   constructor(private http: HttpClient) {}
 
   private randomPersonNumber(): number {
-    return  Math.floor(Math.random() * (50 - 1 + 1) + 1);
+    return Math.floor(Math.random() * (50 + 1) + 1);
   }
 
   private randomStarshipNumber(): number {
-    return Math.floor(Math.random() * (36 - 1 + 1) + 1);
+    return Math.floor(Math.random() * (36 + 1) + 1);
   }
 
   private getPerson(): Observable<GameCard> {
@@ -48,6 +48,7 @@ export class PlaygroundService {
     if (modeType === ModeType.StarsShipVsStarsShip) {
       return this.getStarship();
     }
-    return this.getPerson();
+    if (this.getPerson()) {
+    }
   }
 }

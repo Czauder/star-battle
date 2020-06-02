@@ -6,6 +6,6 @@ import { Component, Input } from '@angular/core';
   styleUrls: ['./game-card.component.scss'],
 })
 export class GameCardComponent {
-  @Input() name: string;
-  @Input() score: number;
+  @Input() nameCard: string;
+  @Input() scoreCard: number;
 }
