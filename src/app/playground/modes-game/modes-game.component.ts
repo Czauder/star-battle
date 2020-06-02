@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
-import { GameState } from 'src/app/store/reducer/playground.reducer';
 import { setMode } from 'src/app/store/actions/playground.action';
+import { GameState } from 'src/app/store/reducer/playground.reducer';
+
 import { ModeType } from '../models/game.model';
 
 @Component({
@@ -15,12 +16,12 @@ export class ModesGameComponent implements OnInit {
 
   public ngOnInit(): void {}
 
-  public navigateSingleModeS(): any {
+  public navigateSingleModeCharacterBattle(): any {
     this.router.navigate(['/single-player']);
     this.store.dispatch(setMode({ modeType: ModeType.PeopleVsPeople }));
   }
 
-  public navigateSingleModeP(): any {
+  public navigateSingleModeStarshipBattle(): any {
     this.router.navigate(['/single-player']);
     this.store.dispatch(setMode({ modeType: ModeType.StarsShipVsStarsShip }));
   }

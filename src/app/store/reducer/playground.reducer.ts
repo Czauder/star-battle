@@ -4,13 +4,13 @@ import { GameType, ModeType, Player } from 'src/app/playground/models/game.model
 import {
   clearGameState,
   getPlayerCards,
-  setPlayerCards,
+  getPlayerCardsFail,
   incrementScorePlayer1,
   incrementScorePlayer2,
   resetScore,
   setGameType,
   setMode,
-  getPlayerCardsFail,
+  setPlayerCards,
 } from '../actions/playground.action';
 
 export interface GameState {

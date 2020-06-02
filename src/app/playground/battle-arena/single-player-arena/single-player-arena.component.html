@@ -1,11 +1,11 @@
 <div class="container">
     <div class="card1">
         <p class="player">Player 1</p>
-        <app-game-card [name]='nameCardPlayer1' [score]='scoreCardPlayer1'></app-game-card>
+        <app-game-card [nameCard]='nameCardPlayer1' [scoreCard]='scoreCardPlayer1'></app-game-card>
     </div>
     <div class="card2">
         <p class="player">cpu</p>
-        <app-game-card [name]='nameCardPlayer2' [score]='scoreCardPlayer2'></app-game-card>
+        <app-game-card [nameCard]='nameCardPlayer2' [scoreCard]='scoreCardPlayer2'></app-game-card>
     </div>
     <div class="result1">
         <p>{{ result1() | emptyValue }}</p>
