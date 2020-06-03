@@ -6,8 +6,6 @@ export const selectGameState = createFeatureSelector<GameState>('GameState');
 
 export const selectModeType = createSelector(selectGameState, (state) => state.modeType);
 
-export const selectGameType = createSelector(selectGameState, (state) => state.gameType);
-
 export const selectPlayer1 = createSelector(selectGameState, (state) => state.player1);
 
 export const selectPlayer2 = createSelector(selectGameState, (state) => state.player2);
