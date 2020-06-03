@@ -1,10 +1,8 @@
 import { createAction, props } from '@ngrx/store';
-import { ModeType, GameType } from 'src/app/playground/models/game.model';
 import { GameCard } from 'src/app/playground/models/game-card.model';
+import { ModeType } from 'src/app/playground/models/game.model';
 
 export const setMode = createAction('[Mode] Set Mode', props<{ modeType: ModeType }>());
-
-export const setGameType = createAction('[Mode] Get Estimate Success', props<{ gameType: GameType }>());
 
 export const clearGameState = createAction('[Clear] Clear Game State');
 

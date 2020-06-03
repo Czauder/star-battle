@@ -48,7 +48,8 @@ export class PlaygroundService {
     if (modeType === ModeType.StarsShipVsStarsShip) {
       return this.getStarship();
     }
-    if (this.getPerson()) {
-    }
+    return this.getPerson();
   }
 }
+
+

@@ -1,5 +1,5 @@
 import { Action, createReducer, on } from '@ngrx/store';
-import { GameType, ModeType, Player } from 'src/app/playground/models/game.model';
+import { ModeType, Player } from 'src/app/playground/models/game.model';
 
 import {
   clearGameState,
@@ -8,13 +8,11 @@ import {
   incrementScorePlayer1,
   incrementScorePlayer2,
   resetScore,
-  setGameType,
   setMode,
   setPlayerCards,
 } from '../actions/playground.action';
 
 export interface GameState {
-  gameType: GameType;
   modeType: ModeType;
   player1: Player;
   player2: Player;
@@ -23,7 +21,6 @@ export interface GameState {
 }
 
 const initialState: GameState = {
-  gameType: null,
   modeType: null,
   player1: { card: null, score: 0 },
   player2: { card: null, score: 0 },
@@ -49,10 +46,6 @@ const reducer = createReducer(
     ...state,
     modeType: action.modeType,
     isDisplay: true,
-  })),
-  on(setGameType, (state, action) => ({
-    ...state,
-    gameType: action.gameType,
   })),
   on(clearGameState, (state) => ({
     ...initialState,
